@@ -1,0 +1,21 @@
+  <button class="btn btn-primary" (click)="addStudentClick()">Add Student</button> <br/>
+
+<div class="table-responsive">
+  <table class="table table-bordered" *ngIf="students && students.length">
+    <thead>
+      <tr class="bg-primary">
+        <th>Name</th>
+        <th>Phone Number</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students">
+        <td>{{ student.Name }}</td>
+        <td>{{ student.PhoneNumber }}</td>
+        <td> <button class="btn btn-primary" (click)="editButtonClick(student.Id)" disabled>Edit</button>
+        <button class="btn btn-primary" (click)="deleteButtonClick(student.Id)">Delete</button> </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
