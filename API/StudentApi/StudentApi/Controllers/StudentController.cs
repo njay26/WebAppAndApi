@@ -1,6 +1,7 @@
 ﻿using System.Web.Http;
 using StudentApi.Models;
 using StudentApi.Services;
+using log4net;
 
 namespace StudentApi.Controllers
 {
@@ -8,8 +9,11 @@ namespace StudentApi.Controllers
     {
         private readonly IStudentService _studentService;
 
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public StudentController(IStudentService studentService)
         {
+         
             _studentService = studentService;
         }
 
@@ -17,6 +21,8 @@ namespace StudentApi.Controllers
         public IHttpActionResult GetStudents()
         {
             var students = _studentService.GetStudents();
+            log.Info("Logging test StudentController ");
+
             return Ok(students);
         }
 
